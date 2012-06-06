@@ -3,8 +3,6 @@ Introduction
 
 These are my vim configuration files and bundles.
 
-I use pathogen to manage vim bundles.
-
 Installing
 ----------
 
