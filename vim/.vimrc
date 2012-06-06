@@ -1,28 +1,21 @@
-set t_vb= 
-colorscheme oceanblack
+set t_vb=
+colorscheme molokai
 
 if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=Inconsolata\ 18
-  elseif has("gui_photon")
-    set guifont=Inconsolata:s18
-  elseif has("gui_kde")
-    set guifont=Inconsolata/18/-1/5/50/0/0/0/1/0
-  elseif has("x11")
-    set guifont=-*-inconsolata-medium-r-normal-*-*-180-*-*-m-*-*
-  else
-    set guifont=Inconsolata:h18
-  endif
+   set guifont=Inconsolata:h16
 endif
 
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
-filetype off
-call pathogen#runtime_append_all_bundles()
-filetype plugin indent on
+" no folds
+set nofoldenable
 
-"autocmd FileType python compiler pylint
+filetype on
+filetype plugin on
+filetype indent on
+
+autocmd FileType python compiler pylint
 
 set nocompatible
 
@@ -43,7 +36,7 @@ set showmode
 set showcmd
 set hidden
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest,list,full
 set cursorline
 set ttyfast
 set ruler
@@ -71,33 +64,24 @@ set gdefault
 set incsearch
 set showmatch
 set hlsearch
+
+" , <space> it disables current search 
 nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
-vnoremap <tab> %
 
 set wrap
 set textwidth=79
 set formatoptions=qrn1
-"set fuopt=maxvert,maxhorz
+set fuopt=maxvert,maxhorz
 
 nmap <leader>l :set list!<CR>
 set list
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:>-,trail:·
+" end of line
+",eol:¬
 
-"nnoremap <up> <nop>
-"nnoremap <down> <nop>
-"nnoremap <left> <nop>
-"nnoremap <right> <nop>
-"inoremap <up> <nop>
-"inoremap <down> <nop>
-"inoremap <left> <nop>
-"inoremap <right> <nop>
-"nnoremap j gj
-"nnoremap k gk
-
-"inoremap <F1> <ESC>
-"nnoremap <F1> <ESC>
-"vnoremap <F1> <ESC>
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
 
 nnoremap ; :
 au FocusLost * :wa
@@ -112,13 +96,10 @@ nnoremap <leader>w <C-w>v<C-w>l
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
 
-nmap <silent> <c-n> :NERDTreeToggle<CR>
-
 au BufNewFile,BufRead *.less set filetype=less
 
-"set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
+" Removes toolbar
+set guioptions-=T
 
 augroup mkd
     autocmd BufRead,BufEnter *.mkd set ai formatoptions=tcroqn2 comments=n:&gt;
@@ -136,8 +117,21 @@ function! TrimWhiteSpace()
   ''
 :endfunction
 
+" Open/Close NERDTree
+map <F1> :NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeToggle<CR>
+
+" Eliminates useless white spaces
 map <F2> :call TrimWhiteSpace()<CR>
-map <F1> :tabnew<CR> 
+
+" PEP mapping (,p is much easier than FN + F5)
+let g:pep8_map='<leader>p'
+
+" Shows hidden files in NERDTree
+let NERDTreeShowHidden=1
+
+" Removes the annoying Press ENTER or type command to continue
+set shortmess=atI
 
 nnoremap <C-j> :m+<CR>==
 nnoremap <C-k> :m-2<CR>==
@@ -146,9 +140,4 @@ inoremap <C-k> <Esc>:m-2<CR>==gi
 vnoremap <C-j> :m'>+<CR>gv=gv
 vnoremap <C-k> :m-2<CR>gv=gv
 
-let g:pyflakes_use_quickfix = 0
-
-let $JS_CMD='node'
-
 cmap w!! w !sudo tee % >/dev/null
-
