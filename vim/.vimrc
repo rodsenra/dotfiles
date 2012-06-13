@@ -75,7 +75,7 @@ set fuopt=maxvert,maxhorz
 
 nmap <leader>l :set list!<CR>
 set list
-set listchars=tab:>-,trail:·
+set listchars=tab:▸\ ,trail:·
 " end of line
 ",eol:¬
 
