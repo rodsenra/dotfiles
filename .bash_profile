@@ -1,5 +1,6 @@
+export PATH="$HOME/bin:$PATH" 
 export WORKON_HOME=~/.virtualenvs
-
+source ~/.profile
 source /usr/local/bin/virtualenvwrapper.sh
 
 # pip bash completion start
@@ -98,3 +99,15 @@ ulimit -n 2048
 # The orginal version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 export PATH
+source /usr/local/bin/virtualenvwrapper.sh
+
+# Setting PATH for Python 2.7
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+export PATH
+
+export VIRTUOSO_HOME=/usr/local/virtuoso-opensource/
+alias ll="ls -ltrGah"
+alias gs="git status"
+
+

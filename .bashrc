@@ -217,9 +217,13 @@ ruby_env_prompt() {
   fi
 }
 
-export PS1="$(ruby_env_prompt)$(venv_prompt) $txtrst$GREEN[\$(date +%H:%M)]$txtrst [/\$(PWD)] $LIGHTCYAN\$(evil_git_prompt)$txtrst \$ "
+export PS1="$(venv_prompt) $txtrst$GREEN[/\$(PWD)]$txtrst $LIGHTCYAN\$(evil_git_prompt)$txtrst \n\$ "
 export PS2="> "
 
 source /usr/local/bin/virtualenvwrapper.sh
+source ~/r/projects/dotfiles/setup_semantica.env
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=/usr/local/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# Console javascript
+alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"
