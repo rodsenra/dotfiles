@@ -91,6 +91,7 @@ export PS1="$(venv_prompt)$txtrst$RED[\$(date +%H:%M)]$txtrst [/\$(PWD)] $LIGHTC
 export PS2="> "
 
 alias uuid="python -c 'from uuid import uuid4; import sys; sys.stdout.write(str(uuid4()))' | pbcopy"
+alias ll="ls -ltrGah"
 
 export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
 
