@@ -1,12 +1,37 @@
-export PATH="$HOME/bin:$PATH" 
+export PATH="$HOME/bin:$PATH"
+export STARDOG_HOME=/usr/local/src/stardog_data
 
-export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
-export HISTSIZE=100000                   # big big history
-export HISTFILESIZE=100000               # big big history
-shopt -s histappend                      # append to history, don't overwrite it
+# MacPorts
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export MANPATH=/opt/local/share/man:$MANPATH
 
+# Terminal colours (after installing GNU coreutils)
+NM="\[\033[0;38m\]" #means no background and white lines
+HI="\[\033[0;37m\]" #change this for letter colors
+HII="\[\033[0;31m\]" #change this for letter colors
+SI="\[\033[0;33m\]" #this is for the current directory
+IN="\[\033[0m\]"
+
+
+if [ "$TERM" != "dumb" ]; then
+    export LS_OPTIONS='--color=auto'
+    eval `dircolors ~/.dir_colors`
+fi
+
+# Useful aliases
+
+alias ll='ls $LS_OPTIONS -lhF'
+alias l='ls $LS_OPTIONS -lAhF'
+alias cd..="cd .."
+alias ssh="ssh -X"
+
+# Shared History between shells
+#export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+#export HISTSIZE=100000                   # big big history
+#export HISTFILESIZE=100000               # big big history
+#shopt -s histappend                      # append to history, don't overwrite it
 # Save and reload the history after each command finishes
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 
 export WORKON_HOME=~/.virtualenvs
@@ -29,7 +54,7 @@ export PIP_RESPECT_VIRTUALENV=true
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
 export CLICOLOR=1
-export LSCOLORS=ExFxCxDxBxegedabagacad
+#export LSCOLORS=ExFxCxDxBxegedabagacad
 
 export PATH=$PATH:/usr/local/share/npm/bin
 export PATH=$PATH:/usr/local/lib/node
@@ -117,8 +142,5 @@ source /usr/local/bin/virtualenvwrapper.sh
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 export PATH
 
-export VIRTUOSO_HOME=/usr/local/virtuoso-opensource/
 alias ll="ls -ltrGah"
 alias gs="git status"
-
-
