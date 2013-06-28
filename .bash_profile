@@ -112,13 +112,13 @@ venv_prompt() {
   fi
 }
 
-export PS1="$(venv_prompt)$txtrst$RED[\$(date +%H:%M)]$txtrst [/\$(PWD)] $LIGHTCYAN\$(evil_git_prompt)$txtrst \$ "
-export PS2="> "
+#export PS1="$(venv_prompt)$txtrst$RED[\$(date +%H:%M)]$txtrst [/\$(PWD)] $LIGHTCYAN\$(evil_git_prompt)$txtrst \$ "
+#export PS2="> "
 
 alias uuid="python -c 'from uuid import uuid4; import sys; sys.stdout.write(str(uuid4()))' | pbcopy"
 alias ll="ls -ltrGah"
 
-export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
+#export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
 
 export PATH=$PATH:~/dev/android-sdk-mac_x86/platform-tools
 export PATH=$PATH:~/dev/android-sdk-mac_x86/tools
@@ -144,3 +144,8 @@ export PATH
 
 alias ll="ls -ltrGah"
 alias gs="git status"
+
+# Setting PATH for Python 2.7
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+export PATH
